@@ -19,16 +19,16 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 
-df = pd.read_csv('../data/heart-disease.csv')
+df = pd.read_csv("../data/heart-disease.csv")
 
 # Split the data into X and y
 X = df.drop("target", axis=1)
-y= df["target"]
+y = df["target"]
 
 # Split the data train and test sets
 np.random.seed(42)
 # Split into train and test
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Choose an appripriate machine learning model(s). Refer https://scikit-learn.org/stable/tutorial/machine_learning_map/
 # 1. Logictic Regression
@@ -36,9 +36,12 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2)
 # 3. Random Forest Classifier
 
 # Put models in a dictionary
-models = {"Logistic Regression": LogisticRegression(),
-         "KNN": KNeighborsClassifier(),
-         "Random Forest": RandomForestClassifier()}
+models = {
+    "Logistic Regression": LogisticRegression(),
+    "KNN": KNeighborsClassifier(),
+    "Random Forest": RandomForestClassifier(),
+}
+
 
 # Function to fit and score various models
 def fit_and_score(models, X_train, X_test, y_train, y_test):
@@ -63,15 +66,13 @@ def fit_and_score(models, X_train, X_test, y_train, y_test):
         model.fit(X_train, y_train)
         # Evaludate the model and append its score to model_scores
         model_scores[name] = model.score(X_test, y_test)
-    
+
     return model_scores
 
 
-model_scores = fit_and_score(models=models,
-              X_train=X_train,
-              X_test=X_test,
-              y_train=y_train,
-              y_test=y_test)
+model_scores = fit_and_score(
+    models=models, X_train=X_train, X_test=X_test, y_train=y_train, y_test=y_test
+)
 
 # ### 6. Fine-tuning classification model performance
 
@@ -87,14 +88,15 @@ print(f"Remove: {knn.score(X_test, y_test)}")
 
 # Create a hyperparamter grid for logistic regression
 # @logspace() : Return numbers spaced evenly on a log scale.
-log_reg_grid = {"C" : np.logspace(-4,4,20),
-                "solver": ["liblinear"]}
+log_reg_grid = {"C": np.logspace(-4, 4, 20), "solver": ["liblinear"]}
 
 # Create a hyperparamter grid for RandomForestClassifier
-rf_grid = {"n_estimators": np.arange(10,1000,50),
-          "max_depth": [None, 3,5,10],
-          "min_samples_split": np.arange(2,20,2),
-          "min_samples_leaf": np.arange(1,20,2)}
+rf_grid = {
+    "n_estimators": np.arange(10, 1000, 50),
+    "max_depth": [None, 3, 5, 10],
+    "min_samples_split": np.arange(2, 20, 2),
+    "min_samples_leaf": np.arange(1, 20, 2),
+}
 
 
 # #### Hyperparameter grids are setup, tune the model using RandomizedSearchCV.
@@ -104,12 +106,14 @@ rf_grid = {"n_estimators": np.arange(10,1000,50),
 np.random.seed(42)
 
 # Setup random hyperparamter search for LogisticRegression
-rs_log_reg = RandomizedSearchCV(LogisticRegression(),
-                               param_distributions=log_reg_grid,
-                               # perform 5-fold cross-validation
-                                cv=5,
-                               n_iter=20,
-                               verbose=True)
+rs_log_reg = RandomizedSearchCV(
+    LogisticRegression(),
+    param_distributions=log_reg_grid,
+    # perform 5-fold cross-validation
+    cv=5,
+    n_iter=20,
+    verbose=True,
+)
 
 # Fit random hyperparameter search model for LogisticRegression
 rs_log_reg.fit(X_train, y_train)
@@ -119,11 +123,9 @@ print(f"Remove: {rs_log_reg.score(X_test, y_test)}")
 
 # Tune RandomForestClassifier
 np.random.seed(42)
-rs_rf = RandomizedSearchCV(RandomForestClassifier(),
-                          param_distributions=rf_grid,
-                          cv=5,
-                          n_iter=20,
-                          verbose=True)
+rs_rf = RandomizedSearchCV(
+    RandomForestClassifier(), param_distributions=rf_grid, cv=5, n_iter=20, verbose=True
+)
 
 # Fit random hyperparameter search model for RandomForestClassifier
 rs_rf.fit(X_train, y_train)
@@ -133,18 +135,16 @@ print(f"Remove: {rs_rf.score(X_test, y_test)}")
 
 
 # #### Hyperparameter Tuning with GridSearchCV
-# 
+#
 # Since Our LogisticRegression Model provides the best score so far, we'll improve it further using GridSearchCV.
 
 # Different hyperparameters for our LogisticRegression model
-log_reg_grid = {"C": np.logspace(-4,4,30),
-               "solver": ["liblinear"]}
+log_reg_grid = {"C": np.logspace(-4, 4, 30), "solver": ["liblinear"]}
 
 # setup grid hyperparameter search for LogisticRegression
-gs_log_reg = GridSearchCV(LogisticRegression(),
-                         param_grid=log_reg_grid,
-                         cv=5,
-                         verbose=True)
+gs_log_reg = GridSearchCV(
+    LogisticRegression(), param_grid=log_reg_grid, cv=5, verbose=True
+)
 
 # Fit grid hyperparameter search model
 gs_log_reg.fit(X_train, y_train)
@@ -156,15 +156,15 @@ print(f"Remove: {gs_log_reg.score(X_test, y_test)}")
 print(f"Remove prediction: {gs_log_reg.predict(X_test)}")
 
 # Save KNN model
-with open('models/knn_model.pkl', 'wb') as f:
+with open("models/knn_model.pkl", "wb") as f:
     pickle.dump(knn, f)
 
 # Save RandomizedSearchCV Logistic Regression model
-with open('models/rs_log_reg_model.pkl', 'wb') as f:
+with open("models/rs_log_reg_model.pkl", "wb") as f:
     pickle.dump(rs_log_reg, f)
 
 # Save RandomizedSearchCV Random Forest model
-with open('models/rs_rf_model.pkl', 'wb') as f:
+with open("models/rs_rf_model.pkl", "wb") as f:
     pickle.dump(rs_rf, f)
 
 # Save GridSearchCV Logistic Regression model

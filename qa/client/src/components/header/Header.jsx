@@ -10,18 +10,18 @@ function Header() {
         <Navbar.Brand as={Link} to="/">
           ML-MERN
         </Navbar.Brand>{" "}
-        {/* Use Link instead of href */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>{" "}
-            {/* Use Link instead of href */}
             <Nav.Link as={Link} to="/knn">
-              KNN
+              K-Nearest Neighbors Classifier
             </Nav.Link>{" "}
-            {/* Example for another route */}
+            <Nav.Link as={Link} to="/gslogistic">
+              GridSearchCV LogisticRegression
+            </Nav.Link>{" "}
           </Nav>
         </Navbar.Collapse>
       </Container>

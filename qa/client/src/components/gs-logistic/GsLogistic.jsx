@@ -1,18 +1,18 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./knn.css";
+import "./gs-logistic.css";
 import Text from "./Text";
 import FormField from "../../Utils/FormField";
 import { useState } from "react";
 import { validationSchema, initialValues } from "../../Utils/validation-schema";
 import handleFormSubmit from "../../Utils/make-request-on-submit";
 
-const Knn = () => {
+const GsLogistic = () => {
   const [prediction, setPrediction] = useState("");
 
   const onSubmit = async (values) => {
-    const responseData = await handleFormSubmit(values, "post", "knn");
+    const responseData = await handleFormSubmit(values, "post", "logictic/gs");
 
     if (responseData == 0) {
       setPrediction("Hurray!!! You have got good heart health...");
@@ -24,7 +24,7 @@ const Knn = () => {
   return (
     <>
       <Text />
-      <div className="knn-page">
+      <div className="gs-logistic">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -69,4 +69,4 @@ const Knn = () => {
   );
 };
 
-export default Knn;
+export default GsLogistic;

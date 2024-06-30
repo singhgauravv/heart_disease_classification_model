@@ -4,6 +4,7 @@ import HomePage from "./components/Home";
 import Knn from "./components/Knn/Knn";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import GsLogistic from "./components/gs-logistic/GsLogistic";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/knn" element={<Knn />} />
+            <Route path="/gslogistic" element={<GsLogistic />} />
           </Routes>
         </div>
         <Footer />

@@ -1,14 +1,24 @@
-import Home from "./components/Knn/Knn";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./components/Home";
+import Knn from "./components/Knn/Knn";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Home />
-      <Footer />
-    </>
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
+        <div className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/knn" element={<Knn />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

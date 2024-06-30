@@ -1,14 +1,14 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./home.css";
+import "./knn.css";
 import Text from "./Text";
 import FormField from "./FormField";
 import { useState } from "react";
 import { validationSchema, initialValues } from "../../Utils/validation-schema";
 import handleFormSubmit from "../../Utils/make-request-on-submit";
 
-const Home = () => {
+const Knn = () => {
   const [prediction, setPrediction] = useState("");
 
   const onSubmit = async (values) => {
@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <>
       <Text />
-      <div className="home-page">
+      <div className="knn-page">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -69,4 +69,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Knn;

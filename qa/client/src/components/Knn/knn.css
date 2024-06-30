@@ -1,8 +1,6 @@
-/* Home.css */
-
-.home-page {
+.knn-page {
   background-color: #f0f0f0; /* Set a light background color */
-  min-height: 70vh; /* Ensure it covers the full viewport height */
+  min-height: 50vh; /* Ensure it covers the full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;

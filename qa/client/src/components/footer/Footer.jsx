@@ -1,14 +1,12 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import "../footer/Footer.css";
 
 function Footer() {
   return (
-    <footer className="custom-footer">
+    <footer className="bg-dark text-white py-3 mt-auto">
       <Container className="text-center">
-        <p>
-          &copy; {new Date().getFullYear()} ML-MERN @singhgauravv. All Rights
-          Reserved.
+        <p className="mb-0">
+          &copy; {new Date().getFullYear()} Your Company. All Rights Reserved.
         </p>
       </Container>
     </footer>

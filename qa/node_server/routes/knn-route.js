@@ -8,7 +8,10 @@ router.post("/api/knn", async (req, res) => {
   const featuresArray = Object.values(attributes);
 
   try {
-    response = await axios.post("http://localhost:5000/knn", featuresArray);
+    response = await axios.post(
+      "http://localhost:5000/python/knn",
+      featuresArray
+    );
     res.status(200).json(response.data);
   } catch (err) {
     console.error("Error during KNN request:", err);

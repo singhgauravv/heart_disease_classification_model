@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 # Path to handle knn prediction.
-@app.route("/knn", methods=["POST"])
+@app.route("/python/knn", methods=["POST"])
 def predict_knn():
     data = request.get_json(force=True)
     try:
@@ -36,7 +36,7 @@ def predict_knn():
 
 
 # Path to handle gridsearch logistic regression prediction.
-@app.route("/logistic/gs", methods=["POST"])
+@app.route("/python/logistic/gs", methods=["POST"])
 def predict_log_gs():
     data = request.get_json(force=True)
     try:
@@ -61,7 +61,7 @@ def predict_log_gs():
 
 
 # Path to handle random forest logistic regression prediction.
-@app.route("/logistic/rs", methods=["POST"])
+@app.route("/python/logistic/rs", methods=["POST"])
 def predict_log_rs():
     data = request.get_json(force=True)
     try:
@@ -86,7 +86,7 @@ def predict_log_rs():
 
 
 # Path to handle random forest randomized search prediction.
-@app.route("/randomforest/rs", methods=["POST"])
+@app.route("/python/randomforest/rs", methods=["POST"])
 def predict_ran_search():
     data = request.get_json(force=True)
     try:

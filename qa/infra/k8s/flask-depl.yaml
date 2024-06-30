@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+        - name: flask
+          image: us.gcr.io/mern-ml/flask
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-srv
+spec:
+  selector:
+    app: flask
+  ports:
+    - name: flask
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

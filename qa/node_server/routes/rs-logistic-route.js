@@ -9,7 +9,7 @@ router.post("/api/logistic/rs", async (req, res) => {
 
   try {
     response = await axios.post(
-      "http://localhost:5000/logistic/rs",
+      "http://localhost:5000/python/logistic/rs",
       featuresArray
     );
     res.status(200).json(response.data);

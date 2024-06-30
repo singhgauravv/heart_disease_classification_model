@@ -9,7 +9,7 @@ router.post("/api/randomforest/rs", async (req, res) => {
 
   try {
     response = await axios.post(
-      "http://localhost:5000/randomforest/rs",
+      "http://localhost:5000/python/randomforest/rs",
       featuresArray
     );
     res.status(200).json(response.data);

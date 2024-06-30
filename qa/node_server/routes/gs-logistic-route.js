@@ -9,7 +9,7 @@ router.post("/api/logictic/gs", async (req, res) => {
 
   try {
     response = await axios.post(
-      "http://localhost:5000/logistic/gs",
+      "http://localhost:5000/python/logistic/gs",
       featuresArray
     );
     res.status(200).json(response.data);

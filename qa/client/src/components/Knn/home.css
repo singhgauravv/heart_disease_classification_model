@@ -1,0 +1,19 @@
+/* Home.css */
+
+.home-page {
+  background-color: #f0f0f0; /* Set a light background color */
+  min-height: 70vh; /* Ensure it covers the full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add padding for spacing */
+}
+
+.form-container {
+  background: #ebeff4; /* White background for the form */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Light shadow for a professional look */
+  width: 100%;
+  max-width: 800px; /* Constrain the width of the form */
+}

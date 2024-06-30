@@ -1,0 +1,27 @@
+/* Header.css */
+
+.custom-navbar {
+  background: linear-gradient(
+    90deg,
+    #15012d,
+    #feb47b
+  ); /* Gradient background */
+  padding: 1rem 0; /* Add padding for a more spacious look */
+  border-bottom: 2px solid #fff; /* Add a border at the bottom */
+}
+
+.custom-navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff; /* Change brand color to white */
+}
+
+.custom-navbar .nav-link {
+  color: #fff !important; /* Change nav link color to white */
+  margin-left: 1rem;
+  font-weight: 500;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffd700 !important; /* Change nav link hover color */
+}

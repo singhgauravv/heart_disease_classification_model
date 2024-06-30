@@ -1,0 +1,18 @@
+/* Footer.css */
+
+.custom-footer {
+  background: linear-gradient(
+    90deg,
+    #000b15,
+    #283e51
+  ); /* Gradient background */
+  color: #fff; /* Text color */
+  padding: 1.5rem 0; /* Padding for a more spacious look */
+  border-top: 2px solid #fff; /* Add a border at the top */
+}
+
+.custom-footer p {
+  margin: 0; /* Remove default margin */
+  font-size: 1rem; /* Set font size */
+  font-weight: 500; /* Set font weight */
+}

@@ -1,23 +1,56 @@
-### Glossary
+# Predict heart disease using machine learning
 
-1. **[Normal Distribution](https://en.wikipedia.org/wiki/Normal_distribution)** : Normal distribution, also known as the Gaussian distribution, is a probability distribution that is symmetric about the mean, showing that data near the mean are more frequent in occurrence than data far from the mean. The normal distribution appears as a "bell curve" when graphed.
+### Define Problem Statement
 
-2. **Correlation matrix:** A correlation matrix is simply a table that displays the correlation coefficients for different variables. The matrix depicts the correlation between all the possible pairs of values in a table. It is a powerful tool to summarize a large dataset and to identify and visualize patterns in the given data.
+> Given clinical attributes of a patient, predict whether they have heart disease or not?
 
-3. [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
-4. [KNeighborsClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
-5. [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
-6. Developing, fine-tuning, and assessing machine learning models:
+### Accuracy Achieved: 88 %
 
-- **Hyperparameter tuning**: Enhances model performance by finding optimal settings.
-- **Feature importance**: Identifies which features most influence the model.
-- **Confusion matrix**: Provides detailed insight into classification accuracy and errors.
-- **Cross-validation**: Ensures model generalizability and robustness by testing on multiple data splits.
-- **Precision**: Indicates the accuracy of positive predictions.
-- **Recall**: Measures the ability to identify all relevant positive instances.
-- **F1 score**: Balances precision and recall, useful for imbalanced datasets.
-- **Classification report**: Summarizes key classification metrics for comprehensive model evaluation.
-- **ROC curve**: Visualizes model performance across different thresholds.
-- **Area under the curve (AUC)**: Quantifies overall model performance.
+models_list = [
+{"name": "Logistic Regression", "model": LogisticRegression()},
+{"name": "KNN", "model": KNeighborsClassifier()},
+{"name": "Random Forest", "model": RandomForestClassifier()},
+{"name": "Tuned KNN", "model": knn}, # KNN with n_neighbors=11
+{"name": "RandomizedSearchCV Logistic Regression", "model": rs_log_reg},
+{"name": "RandomizedSearchCV Random Forest", "model": rs_rf},
+{"name": "GridSearchCV Logistic Regression", "model": gs_log_reg}
+]
 
-7. **[RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html)**
+### Features
+
+**Create data dictionary**
+
+- **age:** The person’s age in years
+- **sex:** The person’s sex (1 = male, 0 = female)
+- **cp:** Chest pain type
+  - Value 0: asymptomatic
+  - Value 1: atypical angina
+  - Value 2: non-anginal pain
+  - Value 3: typical angina
+- **trestbps:** The person’s resting blood pressure (mm Hg on admission to the hospital)
+- **chol:** The person’s cholesterol measurement in mg/dl
+- **fbs:** The person’s fasting blood sugar (> 120 mg/dl, 1 = true; 0 = false)
+- **restecg:** Resting electrocardiographic results
+  - Value 0: showing probable or definite left ventricular hypertrophy by Estes’ criteria
+  - Value 1: normal
+  - Value 2: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)
+- **thalach:** The person’s maximum heart rate achieved
+- **exang:** Exercise-induced angina (1 = yes; 0 = no)
+- **oldpeak:** ST depression induced by exercise relative to rest
+- **slope:** The slope of the peak exercise ST segment
+  - Value 0: downsloping
+  - Value 1: flat
+  - Value 2: upsloping
+- **ca:** The number of major vessels (0–3)
+- **thal:** A blood disorder called thalassemia
+  - Value 0: NULL (dropped from the dataset previously)
+  - Value 1: fixed defect (no blood flow in some part of the heart)
+  - Value 2: normal blood flow
+  - Value 3: reversible defect (a blood flow is observed but it is not normal)
+- **target:** Heart disease (1 = no, 0 = yes)
+
+To run this app locally:
+
+1. Run `npm run dev` in client dir.
+1. Run `npm start` in node_server dir.
+1. Run `python app.py` in python_server dir.

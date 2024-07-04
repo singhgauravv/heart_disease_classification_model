@@ -6,15 +6,11 @@
 
 ### Accuracy Achieved: 88 %
 
-models_list = [
-{"name": "Logistic Regression", "model": LogisticRegression()},
-{"name": "KNN", "model": KNeighborsClassifier()},
-{"name": "Random Forest", "model": RandomForestClassifier()},
-{"name": "Tuned KNN", "model": knn}, # KNN with n_neighbors=11
-{"name": "RandomizedSearchCV Logistic Regression", "model": rs_log_reg},
-{"name": "RandomizedSearchCV Random Forest", "model": rs_rf},
-{"name": "GridSearchCV Logistic Regression", "model": gs_log_reg}
-]
+### Algorithms
+
+1. KNN
+2. Logistic Regression
+3. Random Forest
 
 ### Features
 
